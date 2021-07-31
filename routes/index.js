@@ -7,10 +7,13 @@ const userController = require("../controllers/user/user_controller");
 const adminController = require("../controllers/admin/admin_controller");
 const { requireAuth } = require("../middleWare/middleWare");
 
+const userDevice=require('express-device')
 /* GET home page. */
 router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
+
+router.use(userDevice.capture())
 
 router.get('*',(err,result,next)=>{
   next()
