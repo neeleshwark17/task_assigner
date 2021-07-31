@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<style>
+  body {
+    background-color: aliceblue;
+    margin-top: 20px;
+  }
+
+  .borderClass {
+    border: 1px solid black;
+  }
+</style>
+
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $("myCarousel").carousel({
+        interval: 2000,
+      });
+    </script>
+
+    <%-include('template/header.ejs')%>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <!-- Jumbotron---------------------------- -->
+    <div class="row container-fluid">
+      <div class="col-lg-4 col-md-3 col-sm-2 col-xs-"></div>
+      <div class="jumbotron" style="background-color: transparent">
+        <h1 class="headingh1">Organize it all,<br />with Creator</h1>
+
+        <%if(hasOwnProperty('userCred')){%>
+          <p>Logged In---<%=userCred.user[0]%></p>
+          <%}%>
+        <div class="row">
+          <div class="col-lg-3 col-md-4"></div>
+          <a class="btn btn-danger a1" href="/signUp">Get Started</a>
+        </div>
+      </div>
+      <div class="container">
+        <img src="images/background.jpg" width="100%" contain" alt="..." />
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <h2 class="headingh2 col-lg-4">
+          A task manager<br />
+          you can trust for life
+        </h2>
+        <!-- Carousel---------------------------- -->
+        <div
+          id="myCarousel"
+          class="carousel slide container col-lg-8"
+          data-ride="carousel"
+        >
+          <ol class="carousel-indicators">
+            <li
+              data-target="#myCarousel"
+              data-slide-to="0"
+              class="active"
+              style="background-color: black"
+            ></li>
+            <li
+              data-target="#myCarousel"
+              data-slide-to="1"
+              style="background-color: black"
+            ></li>
+            <li
+              data-target="#myCarousel"
+              data-slide-to="2 "
+              style="background-color: black"
+            ></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <a href="/create">
+                <img
+                  src="/images/create.png"
+                  class="d-block w-100 img2"
+                  alt="Create"
+                />
+              </a>
+              <div class="carousel-caption d-none d-md-block">
+                <h5 class="black">Create</h5>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <a href="/edit">
+                <img
+                  src="/images/edit.jpg"
+                  class="d-block w-100 img2"
+                  alt="Create"
+                />
+              </a>
+              <div class="carousel-caption d-none d-md-block">
+                <h5 class="black">Edit</h5>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <a href="/delete">
+                <img
+                  src="/images/delete.jpg"
+                  class="d-block w-100 img2"
+                  alt="Create"
+                />
+              </a>
+              <div class="carousel-caption d-none d-md-block">
+                <h5 class="black">Delete</h5>
+              </div>
+            </div>
+          </div>
+          <a
+            class="carousel-control-prev"
+            href="#myCarousel"
+            role="button"
+            data-slide="prev"
+          >
+            <span
+              style="filter: invert(100%)"
+              class="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#myCarousel"
+            role="button"
+            data-slide="next"
+          >
+            <span
+              class="carousel-control-next-icon"
+              aria-hidden="true"
+              style="filter: invert(100%)"
+            ></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
