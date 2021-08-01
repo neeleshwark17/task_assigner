@@ -170,6 +170,11 @@ exports.signUpWithEmail = (req, res) => {
   }
 };
 
+exports.logOut = (req, res) => {
+  res.cookie("jwtLogin", "", { maxAge: 1 });
+  res.redirect("/");
+};
+
 // exports.sigIn = (req, res) => {
 //   //check if data already exists
 //   let usersCollection = db.collection("userCollection").doc(email);
