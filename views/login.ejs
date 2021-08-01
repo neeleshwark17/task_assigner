@@ -62,7 +62,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-analytics.js"></script>
 
     <%-include('template/header.ejs')%>
-    <title><%if(hasOwnProperty('title')) %></title>
+      <%if(hasOwnProperty('title')){ %>
+        <title><%=title%></title>
+      <%}%>
   </head>
   <body>
     <div class="container">
@@ -91,10 +93,6 @@
         </div>
       </div>
     </div>
-
-    <!-- <script src="/__/firebase/8.7.0/firebase-app.js"></script>
-<script src="/__/firebase/8.7.0/firebase-analytics.js"></script>
-<script src="/__/firebase/init.js"></script> -->
   </body>
 </html>
 
@@ -105,53 +103,3 @@
 
   $("#loginButton").attr(title, "Login with Google");
 </script>
-
-<!-- <script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
-    apiKey: "AIzaSyAD9-R0byZdB3-Q6r82n2z9qLEzl9ZxcnQ",
-    authDomain: "taskassigner-1554b.firebaseapp.com",
-    projectId: "taskassigner-1554b",
-    storageBucket: "taskassigner-1554b.appspot.com",
-    messagingSenderId: "496338878383",
-    appId: "1:496338878383:web:d58df784e7286a4ad7395a",
-    measurementId: "G-8Y1ZLKEFZK"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-
-  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
-
-  $('#loginButton').submit(function(event){
-    event.preventDefault()
-    const email=event.target.emailEntered.value;
-    const password=event.target.passwordEntered.value;
-
-    firebase
-    .auth()
-    .signInWithEmailAndPassword(email,password)
-    .then(({user})=>{
-      return user.getTokenId().then((idToken)=>{
-        return fetch('/signInWithGoogle',{
-          method:'POST',
-          headers:{
-            Accept:'application/json',
-            'Content-Type':'application/json',
-            'CSRF-Token':Cookies.get('XSRF-TOKEN')
-          },
-          body:JSON.stringify({idToken})
-        })
-      })
-    })
-    .then(()=>{
-      return firebase.auth().signOut()
-    })
-    .then(()=>{
-      window.location.assign('/about')
-    })
-    return false;
-
-  })
-</script> -->

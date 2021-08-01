@@ -4,7 +4,7 @@ const admin = require("firebase-admin");
 
 const userController = require("../controllers/user/user_controller");
 const adminController = require("../controllers/admin/admin_controller");
-const { requireAuth, checkCurrentUser } = require("../middleWare/middleWare");
+const { requireAuth, checkCurrentUser, checkUserLoggedIn } = require("../middleWare/middleWare");
 
 const userDevice = require("express-device");
 
@@ -18,7 +18,7 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-router.get("/login", userController.login);
+router.get("/login",checkUserLoggedIn, userController.login);
 router.get("/signUp", userController.signUp);
 router.get("/dataPage", requireAuth, userController.dataPage);
 router.get("/about", requireAuth, userController.about);

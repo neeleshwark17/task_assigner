@@ -33,23 +33,24 @@
             <li class="nav-item active">
               <a class="nav-link" href="/about">About</a>
             </li>
-            <%if(hasOwnProperty('user')){%>
-              <h5 class="text-primary mt-1 ml-5">
-                Hello Mr.  <%=user%>
-              </h5>
-              <%}%>
+            <%if(user){%>
+            <h5 class="text-primary mt-1 ml-5">Hello Mr. <%=user%></h5>
+            <%}%>
           </ul>
-          
+
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/signUp">SignUp</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/logOut">Log Out</a>
-            </li>
+              <% if (user){%>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/logOut">Log Out</a>
+                </li>
+                <% } else {%>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/signUp">SignUp</a>
+                </li>
+              <%}%>             
           </ul>
         </div>
       </nav>

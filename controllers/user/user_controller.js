@@ -52,10 +52,10 @@ exports.signUp = (req, res) => {
 };
 
 exports.dataPage = (req, res) => {
-  res.render("dataPage", { title: "AboutUs" });
+  res.render("dataPage", { title: "DataPage" });
 };
 exports.about = (req, res) => {
-  res.render("about", { title: "DataPage" });
+  res.render("about", { title: "AboutUs" });
 };
 
 exports.signUpWithGoogle = (req, res) => {
@@ -81,7 +81,7 @@ exports.signInWithGoogle = (req, res) => {
   //   );
 };
 
-exports.signInWithEmail = (req, res) => {
+exports.signInWithEmail =  (req, res) => {
   let email = req.body.emailEntered;
   let password = req.body.passwordEntered;
 
@@ -92,7 +92,7 @@ exports.signInWithEmail = (req, res) => {
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
-    .then((userCredentials) => {
+    .then(async (userCredentials) => {
       try {
         console.log("CREDS:-" + userCredentials.user);
         const idToken = firebase.auth().currentUser.getIdToken();
@@ -105,11 +105,17 @@ exports.signInWithEmail = (req, res) => {
           secure: false,
         });
 
-        res
-          .status(200)
-          .render("index", { title: "Home", userCred: userCredentials });
+        let user=await db.collection('usersCollection').doc(`${email}`).get()
+        if(user){
+        res.locals.user=user.data().name;
+        }else{
+        res.locals.user=null;
+        }
+        console.log('here set locals---------------------->',res.locals.user)
+
+        res.status(200).render("index", { title: "Home" });
       } catch (e) {
-        console.log(e);
+        console.log('errors===>',e);
         res.render("login", {
           title: "Login",
         });
