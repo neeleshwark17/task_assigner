@@ -1,7 +1,17 @@
-li:hover {
-font-weight: 700
+li:hover{
+  border-bottom:1px solid #E44332;
+  background-color: rgb(240, 240, 240);
+}
+
+li{
+  display: inline-block;
+  align-items: center;
+  text-align: center;
+  font-size: large;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  width: 10vh;
 }
 
 a:hover{
-  font-weight: 700;
+  /* font-weight: 700; */
 }

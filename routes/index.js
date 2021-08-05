@@ -15,7 +15,7 @@ router.get("*", checkCurrentUser);
 /* GET home page. */
 router.get("/", function (req, res, next) {
   console.log('locals',res.locals.user)
-  res.render("index", { title: "Express" });
+  res.render("index", { title: "Creator" });
 });
 
 router.get("/login",checkUserLoggedIn, userController.login);

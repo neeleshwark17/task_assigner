@@ -55,7 +55,7 @@ const checkCurrentUser = (req, res, next) => {
 const checkUserLoggedIn = (req, res, next) => {
   const token = req.cookies.jwtLogin;
   if (token) {
-    jwt.verify(token,process.env.JWT_SECRET, (err, decodedToken) => {
+    jwt.verify(token,process.env.JWT_SECRET,   (err, decodedToken) => {
       if (err) {
         console.log('token not verified in logged in check')
         next();
